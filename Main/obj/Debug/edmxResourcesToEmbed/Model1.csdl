@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VesteBemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Carrinho">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProdutoID" Type="Int32" Nullable="false" />
+    <Property Name="Quantidade" Type="Int32" Nullable="false" />
+    <Property Name="DataCompra" Type="DateTime" Precision="3" />
+    <Property Name="NoCart" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK_Carrinho_Produto" FromRole="Carrinho" ToRole="Produto" />
+    <Property Name="Tamanho" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoID" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Preco" Type="Double" />
+    <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carrinho" Relationship="Self.FK_Carrinho_Produto" FromRole="Produto" ToRole="Carrinho" />
+    <NavigationProperty Name="Tipo_Produto" Relationship="Self.FK_Produto_Tipo_Produto" FromRole="Produto" ToRole="Tipo_Produto" />
+    <Property Name="TipoRID" Type="Int32" />
+    <NavigationProperty Name="TipoRoupa" Relationship="VesteBemDBModel.FK__Produto__TipoRID__59C55456" FromRole="Produto" ToRole="TipoRoupa" />
+  </EntityType>
+  <EntityType Name="Tipo_Produto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK_Produto_Tipo_Produto" FromRole="Tipo_Produto" ToRole="Produto" />
+    <NavigationProperty Name="TipoRoupa" Relationship="VesteBemDBModel.FK__TipoRoupa__TipoI__5AB9788F" FromRole="Tipo_Produto" ToRole="TipoRoupa" />
+  </EntityType>
+  <Association Name="FK_Carrinho_Produto">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carrinho">
+        <PropertyRef Name="ProdutoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produto_Tipo_Produto">
+    <End Role="Tipo_Produto" Type="Self.Tipo_Produto" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VesteBemDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Carrinho" EntityType="Self.Carrinho" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" />
+    <EntitySet Name="Tipo_Produto" EntityType="Self.Tipo_Produto" />
+    <AssociationSet Name="FK_Carrinho_Produto" Association="Self.FK_Carrinho_Produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Carrinho" EntitySet="Carrinho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produto_Tipo_Produto" Association="Self.FK_Produto_Tipo_Produto">
+      <End Role="Tipo_Produto" EntitySet="Tipo_Produto" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <EntitySet Name="UserInfo" EntityType="VesteBemDBModel.UserInfo" />
+    <EntitySet Name="Departamentos" EntityType="VesteBemDBModel.Departamentos" />
+    <EntitySet Name="Morada" EntityType="VesteBemDBModel.Morada" />
+    <EntitySet Name="Paises" EntityType="VesteBemDBModel.Paises" />
+    <EntitySet Name="Trabalhadores" EntityType="VesteBemDBModel.Trabalhadores" />
+    <AssociationSet Name="FK_Trabalhadores_Departamentos" Association="VesteBemDBModel.FK_Trabalhadores_Departamentos">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabalhadores_Morada" Association="VesteBemDBModel.FK_Trabalhadores_Morada">
+      <End Role="Morada" EntitySet="Morada" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabalhadores_Paises" Association="VesteBemDBModel.FK_Trabalhadores_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+    <EntitySet Name="Fornecedores" EntityType="VesteBemDBModel.Fornecedores" />
+    <EntitySet Name="FornProduto" EntityType="VesteBemDBModel.FornProduto" />
+    <AssociationSet Name="FK_Fornecedores_FornProduto" Association="VesteBemDBModel.FK_Fornecedores_FornProduto">
+      <End Role="FornProduto" EntitySet="FornProduto" />
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fornecedores_Morada" Association="VesteBemDBModel.FK_Fornecedores_Morada">
+      <End Role="Morada" EntitySet="Morada" />
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fornecedores_Paises" Association="VesteBemDBModel.FK_Fornecedores_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Morada_Paises" Association="VesteBemDBModel.FK_Morada_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Morada" EntitySet="Morada" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="VesteBemDBModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="VesteBemDBModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="VesteBemDBModel.AspNetUserClaims" />
+    <EntitySet Name="TipoRoupa" EntityType="VesteBemDBModel.TipoRoupa" />
+    <AssociationSet Name="FK__Produto__TipoRID__59C55456" Association="VesteBemDBModel.FK__Produto__TipoRID__59C55456">
+      <End Role="TipoRoupa" EntitySet="TipoRoupa" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TipoRoupa__TipoI__5AB9788F" Association="VesteBemDBModel.FK__TipoRoupa__TipoI__5AB9788F">
+      <End Role="Tipo_Produto" EntitySet="Tipo_Produto" />
+      <End Role="TipoRoupa" EntitySet="TipoRoupa" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GUID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PrimeiroNome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UltimoNome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Morada" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CodPostal" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Trabalhadores" Relationship="VesteBemDBModel.FK_Trabalhadores_Departamentos" FromRole="Departamentos" ToRole="Trabalhadores" />
+  </EntityType>
+  <EntityType Name="Morada">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Rua" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Numero" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Cidade" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PaisID" Type="Int32" />
+    <NavigationProperty Name="Trabalhadores" Relationship="VesteBemDBModel.FK_Trabalhadores_Morada" FromRole="Morada" ToRole="Trabalhadores" />
+    <NavigationProperty Name="Fornecedores" Relationship="VesteBemDBModel.FK_Fornecedores_Morada" FromRole="Morada" ToRole="Fornecedores" />
+    <NavigationProperty Name="Paises" Relationship="VesteBemDBModel.FK_Morada_Paises" FromRole="Morada" ToRole="Paises" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Capital" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Nacionalidade" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Trabalhadores" Relationship="VesteBemDBModel.FK_Trabalhadores_Paises" FromRole="Paises" ToRole="Trabalhadores" />
+    <NavigationProperty Name="Fornecedores" Relationship="VesteBemDBModel.FK_Fornecedores_Paises" FromRole="Paises" ToRole="Fornecedores" />
+    <NavigationProperty Name="Morada" Relationship="VesteBemDBModel.FK_Morada_Paises" FromRole="Paises" ToRole="Morada" />
+  </EntityType>
+  <EntityType Name="Trabalhadores">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimeiroNome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoNome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PaisID" Type="Int32" />
+    <Property Name="DataNascimento" Type="DateTime" Precision="0" />
+    <Property Name="MoradaID" Type="Int32" />
+    <Property Name="DepartamentoID" Type="Int32" />
+    <NavigationProperty Name="Departamentos" Relationship="VesteBemDBModel.FK_Trabalhadores_Departamentos" FromRole="Trabalhadores" ToRole="Departamentos" />
+    <NavigationProperty Name="Morada" Relationship="VesteBemDBModel.FK_Trabalhadores_Morada" FromRole="Trabalhadores" ToRole="Morada" />
+    <NavigationProperty Name="Paises" Relationship="VesteBemDBModel.FK_Trabalhadores_Paises" FromRole="Trabalhadores" ToRole="Paises" />
+  </EntityType>
+  <Association Name="FK_Trabalhadores_Departamentos">
+    <End Type="VesteBemDBModel.Departamentos" Role="Departamentos" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Trabalhadores" Role="Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="DepartamentoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabalhadores_Morada">
+    <End Type="VesteBemDBModel.Morada" Role="Morada" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Trabalhadores" Role="Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Morada">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="MoradaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabalhadores_Paises">
+    <End Type="VesteBemDBModel.Paises" Role="Paises" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Trabalhadores" Role="Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Fornecedores">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="TipoID" Type="Int32" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PaisID" Type="Int32" />
+    <Property Name="MoradaID" Type="Int32" />
+    <NavigationProperty Name="FornProduto" Relationship="VesteBemDBModel.FK_Fornecedores_FornProduto" FromRole="Fornecedores" ToRole="FornProduto" />
+    <NavigationProperty Name="Morada" Relationship="VesteBemDBModel.FK_Fornecedores_Morada" FromRole="Fornecedores" ToRole="Morada" />
+    <NavigationProperty Name="Paises" Relationship="VesteBemDBModel.FK_Fornecedores_Paises" FromRole="Fornecedores" ToRole="Paises" />
+  </EntityType>
+  <EntityType Name="FornProduto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Fornecedores" Relationship="VesteBemDBModel.FK_Fornecedores_FornProduto" FromRole="FornProduto" ToRole="Fornecedores" />
+  </EntityType>
+  <Association Name="FK_Fornecedores_FornProduto">
+    <End Type="VesteBemDBModel.FornProduto" Role="FornProduto" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Fornecedores" Role="Fornecedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FornProduto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fornecedores">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fornecedores_Morada">
+    <End Type="VesteBemDBModel.Morada" Role="Morada" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Fornecedores" Role="Fornecedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Morada">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fornecedores">
+        <PropertyRef Name="MoradaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fornecedores_Paises">
+    <End Type="VesteBemDBModel.Paises" Role="Paises" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Fornecedores" Role="Fornecedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fornecedores">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Morada_Paises">
+    <End Type="VesteBemDBModel.Paises" Role="Paises" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Morada" Role="Morada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Morada">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TipoRoupa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TipoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Produto" Relationship="VesteBemDBModel.FK__Produto__TipoRID__59C55456" FromRole="TipoRoupa" ToRole="Produto" />
+    <NavigationProperty Name="Tipo_Produto" Relationship="VesteBemDBModel.FK__TipoRoupa__TipoI__5AB9788F" FromRole="TipoRoupa" ToRole="Tipo_Produto" />
+  </EntityType>
+  <Association Name="FK__Produto__TipoRID__59C55456">
+    <End Type="VesteBemDBModel.TipoRoupa" Role="TipoRoupa" Multiplicity="0..1" />
+    <End Type="VesteBemDBModel.Produto" Role="Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoRoupa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="TipoRID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TipoRoupa__TipoI__5AB9788F">
+    <End Type="VesteBemDBModel.Tipo_Produto" Role="Tipo_Produto" Multiplicity="1" />
+    <End Type="VesteBemDBModel.TipoRoupa" Role="TipoRoupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TipoRoupa">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

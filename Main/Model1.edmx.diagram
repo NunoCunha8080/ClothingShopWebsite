@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="910cb07a8e02420eb6722cb833eac3b7" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="VesteBemDBModel.Carrinho" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Produto" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Tipo_Produto" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Carrinho_Produto" ManuallyRouted="false" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Produto_Tipo_Produto" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VesteBemDBModel.UserInfo" Width="1.5" PointX="7.125" PointY="1.125" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Departamentos" Width="1.5" PointX="5.75" PointY="7.125" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Morada" Width="1.5" PointX="3.625" PointY="8.5" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Paises" Width="1.5" PointX="7.5" PointY="9.875" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Trabalhadores" Width="1.5" PointX="12" PointY="9.875" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Trabalhadores_Departamentos" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Trabalhadores_Morada" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Trabalhadores_Paises" />
+        <EntityTypeShape EntityType="VesteBemDBModel.Fornecedores" Width="1.5" PointX="8.5" PointY="5.5" />
+        <EntityTypeShape EntityType="VesteBemDBModel.FornProduto" Width="1.5" PointX="10.875" PointY="7.25" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Fornecedores_FornProduto" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Fornecedores_Morada" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Fornecedores_Paises" />
+        <AssociationConnector Association="VesteBemDBModel.FK_Morada_Paises" />
+        <EntityTypeShape EntityType="VesteBemDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VesteBemDBModel.AspNetRoles" Width="1.5" PointX="15.5" PointY="7.75" />
+        <EntityTypeShape EntityType="VesteBemDBModel.AspNetUserClaims" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="VesteBemDBModel.TipoRoupa" Width="1.5" PointX="1.25" PointY="3.875" />
+        <AssociationConnector Association="VesteBemDBModel.FK__Produto__TipoRID__59C55456" />
+        <AssociationConnector Association="VesteBemDBModel.FK__TipoRoupa__TipoI__5AB9788F" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

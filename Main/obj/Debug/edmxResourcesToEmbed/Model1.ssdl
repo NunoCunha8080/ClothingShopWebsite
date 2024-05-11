@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VesteBemDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Carrinho">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProdutoID" Type="int" Nullable="false" />
+    <Property Name="Quantidade" Type="int" Nullable="false" />
+    <Property Name="DataCompra" Type="datetime" />
+    <Property Name="NoCart" Type="bit" Nullable="false" />
+    <Property Name="Tamanho" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Fornecedores">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nchar" MaxLength="50" />
+    <Property Name="TipoID" Type="int" />
+    <Property Name="Tel" Type="nchar" MaxLength="50" />
+    <Property Name="Email" Type="nchar" MaxLength="50" />
+    <Property Name="PaisID" Type="int" />
+    <Property Name="MoradaID" Type="int" />
+  </EntityType>
+  <EntityType Name="FornProduto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Morada">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Rua" Type="nchar" MaxLength="50" />
+    <Property Name="Numero" Type="nchar" MaxLength="50" />
+    <Property Name="Cidade" Type="nchar" MaxLength="50" />
+    <Property Name="PaisID" Type="int" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="nchar" MaxLength="10" />
+    <Property Name="Nome" Type="nchar" MaxLength="50" />
+    <Property Name="Capital" Type="nchar" MaxLength="50" />
+    <Property Name="Nacionalidade" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoID" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" />
+    <Property Name="Preco" Type="float" />
+    <Property Name="Descricao" Type="text" />
+    <Property Name="Image" Type="varchar" MaxLength="150" />
+    <Property Name="TipoRID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tipo_Produto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoRoupa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TipoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trabalhadores">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimeiroNome" Type="nvarchar" MaxLength="50" />
+    <Property Name="SegundoNome" Type="nchar" MaxLength="50" />
+    <Property Name="Tel" Type="nchar" MaxLength="50" />
+    <Property Name="Email" Type="nchar" MaxLength="50" />
+    <Property Name="PaisID" Type="int" />
+    <Property Name="DataNascimento" Type="date" />
+    <Property Name="MoradaID" Type="int" />
+    <Property Name="DepartamentoID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GUID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PrimeiroNome" Type="nvarchar" MaxLength="100" />
+    <Property Name="UltimoNome" Type="nvarchar" MaxLength="100" />
+    <Property Name="Morada" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CodPostal" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Produto__TipoRID__59C55456">
+    <End Role="TipoRoupa" Type="Self.TipoRoupa" Multiplicity="0..1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoRoupa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="TipoRID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TipoRoupa__TipoI__5AB9788F">
+    <End Role="Tipo_Produto" Type="Self.Tipo_Produto" Multiplicity="1" />
+    <End Role="TipoRoupa" Type="Self.TipoRoupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TipoRoupa">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrinho_Produto1">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="Carrinho" Type="Self.Carrinho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carrinho">
+        <PropertyRef Name="ProdutoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fornecedores_FornProduto">
+    <End Role="FornProduto" Type="Self.FornProduto" Multiplicity="0..1" />
+    <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FornProduto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fornecedores">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fornecedores_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fornecedores">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Morada_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Morada" Type="Self.Morada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Morada">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produto_Tipo_Produto">
+    <End Role="Tipo_Produto" Type="Self.Tipo_Produto" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabalhadores_Departamentos">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+    <End Role="Trabalhadores" Type="Self.Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="DepartamentoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabalhadores_Morada">
+    <End Role="Morada" Type="Self.Morada" Multiplicity="0..1" />
+    <End Role="Trabalhadores" Type="Self.Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Morada">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="MoradaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabalhadores_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Trabalhadores" Type="Self.Trabalhadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trabalhadores">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VesteBemDBModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carrinho" EntityType="Self.Carrinho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fornecedores" EntityType="Self.Fornecedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FornProduto" EntityType="Self.FornProduto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Morada" EntityType="Self.Morada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Produto" EntityType="Self.Tipo_Produto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoRoupa" EntityType="Self.TipoRoupa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trabalhadores" EntityType="Self.Trabalhadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Produto__TipoRID__59C55456" Association="Self.FK__Produto__TipoRID__59C55456">
+      <End Role="TipoRoupa" EntitySet="TipoRoupa" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TipoRoupa__TipoI__5AB9788F" Association="Self.FK__TipoRoupa__TipoI__5AB9788F">
+      <End Role="Tipo_Produto" EntitySet="Tipo_Produto" />
+      <End Role="TipoRoupa" EntitySet="TipoRoupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrinho_Produto1" Association="Self.FK_Carrinho_Produto1">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Carrinho" EntitySet="Carrinho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fornecedores_FornProduto" Association="Self.FK_Fornecedores_FornProduto">
+      <End Role="FornProduto" EntitySet="FornProduto" />
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fornecedores_Paises" Association="Self.FK_Fornecedores_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Morada_Paises" Association="Self.FK_Morada_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Morada" EntitySet="Morada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produto_Tipo_Produto" Association="Self.FK_Produto_Tipo_Produto">
+      <End Role="Tipo_Produto" EntitySet="Tipo_Produto" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabalhadores_Departamentos" Association="Self.FK_Trabalhadores_Departamentos">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabalhadores_Morada" Association="Self.FK_Trabalhadores_Morada">
+      <End Role="Morada" EntitySet="Morada" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabalhadores_Paises" Association="Self.FK_Trabalhadores_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Trabalhadores" EntitySet="Trabalhadores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

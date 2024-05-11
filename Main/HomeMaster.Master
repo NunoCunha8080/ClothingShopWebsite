@@ -1,0 +1,182 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeMaster.Master.cs" Inherits="VesteBem.Home" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+        <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/Loja.css" type="text/css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="Home.aspx"><img src="Imgages/logos/ss.PNG" alt="" class="auto-style1"></a>
+                </div>
+                <div class="header-right">
+                </div>
+                <div class="user-access">
+                    <a id="linkRegister" href="Registar.aspx" runat="server">Register</a>
+                    <a id="litStatus" runat="server"></a>
+
+                    <a id="linkLogIn" href="LogIn.aspx" runat="server">LogIN</a>
+                    <asp:LinkButton ID="linkLogOut" runat="server" Cssclass="in" OnClick="linkLogOut_Click">LogOut</asp:LinkButton>
+                    
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a class="active" href="Home.aspx">Home</a></li>
+                        <li><a href="LojaHome.aspx">Loja</a>
+                            <ul class="sub-menu">
+                                <li><a href="LojaHome.aspx">Product Page</a></li>
+                                <li><a href="LojaCheckOut.aspx">Shopping Card & Check Out</a></li>
+                            </ul>
+                        </li>
+                        <%--<li><a href="./check-out.html">Lookbook</a></li>--%>
+                        <li><a href="Email.aspx">Contact</a></li>
+       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header Info Begin -->
+    <div class="header-info">
+ <%--       <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="header-item">
+                        <img src="img/icons/delivery.png" alt="">
+                        <p>Envio gratuito com pedidos a cima de $30</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-lg-center">
+                    <div class="header-item">
+                        <img src="img/icons/voucher.png" alt="">
+                        <p>20% disconto de estudante</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-xl-right">
+                    <div class="header-item">
+                    <img src="img/icons/sales.png" alt="">
+                    <p>30% de desconto em vestidos. Use o código: 30OFF</p>
+                </div>
+                </div>
+            </div>
+        </div>--%>
+    </div>
+    <!-- Header Info End -->
+    <!-- Header End -->
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+                <!-- Footer Section Begin -->
+    <footer class="footer-section spad">
+        <div class="container">
+            <div class="footer-widget">
+                <div class="row" >
+                                        <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+<%--                            <h4>Area Reservada</h4>
+                            <ul>                              
+                                <a runat="server" id="A1" href="Gerenciamento/Menu.aspx"><li>Back Office</li></a>
+<%--                                <li><a href="Gerenciamento/Menu.aspx"></a>Back Office</li>--%>
+                            </ul>--%>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Area Reservada</h4>
+                            <ul>                              
+                                <a runat="server" id="linkBO" href="~/Gerenciamento/Menu.aspx"><li>Back Office</li></a>
+<%--                                <li><a href="Gerenciamento/Menu.aspx"></a>Back Office</li>--%>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Informacao</h4>
+                            <ul>
+                                <li>Metodos de Envio</li>
+                                <a href="https://www.instagram.com/explore/tags/lookbook/"><li>2020 Lookbook</li></a>
+                                <a href="https://www.privacypolicygenerator.info/live.php?token=UMHRYzBevK68d15k5YWwTUBJdiDJsXDx"><li>Privacy Policy</li></a>
+                                <a href="https://www.termsandconditionsgenerator.com/live.php?token=SQ9sx7C3UWGIVaIrwOWvaw932UqfcNz6"><li>Termos e Condições</li></a>
+                                <a href="Email.aspx"><li>A sua opinião</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                                        <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+<%--                            <h4>Area Reservada</h4>
+                            <ul>                              
+                                <a runat="server" id="A1" href="Gerenciamento/Menu.aspx"><li>Back Office</li></a>
+<%--                                <li><a href="Gerenciamento/Menu.aspx"></a>Back Office</li>--%>
+                            </ul>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+			<div class="container">
+				<div class="social-links" style="text-align:center;">
+					<a href="https://www.instagram.com/veste_bem101/" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="https://www.facebook.com/VesteBem-101175241469103/?modal=admin_todo_tour" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="https://twitter.com/VesteBem4" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+				</div>
+			</div>
+
+<%--<div class="container text-center pt-5">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>--%>
+
+
+		</div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/main.js"></script>
+        </div>
+    </form>
+</body>
+</html>
